@@ -1,0 +1,8 @@
+:root {
+  --color-primary: #000;
+  --color-text: #333;
+  --color-text-light: rgba(255, 255, 255, 0.9);
+  --color-background: #fff;
+  --color-hover: rgba(0, 0, 0, 0.04);
+  --transition-default: all 0.3s ease;
+} 

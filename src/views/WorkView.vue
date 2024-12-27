@@ -1,0 +1,105 @@
+<template>
+  <div class="work-page">
+    <WorkFilter v-model="currentCategory" />
+    <WorkGrid 
+      :works="works"
+      :current-category="currentCategory"
+      :has-more="hasMoreWorks"
+      @load-more="loadMoreWorks"
+    />
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import WorkFilter from '@/components/work/WorkFilter.vue'
+import WorkGrid from '@/components/work/WorkGrid.vue'
+
+// 导入图片
+import image1 from '@/assets/images/10001.jpg'
+import image2 from '@/assets/images/10002.png'
+import image3 from '@/assets/images/10003.png'
+import image4 from '@/assets/images/10004.png'
+import image5 from '@/assets/images/10005.png'
+import image6 from '@/assets/images/10006.png'
+import image7 from '@/assets/images/10007.png'
+import image8 from '@/assets/images/10008.png'
+
+const currentCategory = ref('all')
+const hasMoreWorks = ref(true)
+const currentPage = ref(1)
+
+const works = ref([
+  {
+    id: 1,
+    title: '品牌设计项目',
+    description: '品牌策略 / 视觉识别 / 2024',
+    category: 'brand',
+    image: image1
+  },
+  {
+    id: 2,
+    title: '数字产品设计',
+    description: 'UI设计 / 用户体验 / 2024',
+    category: 'digital',
+    image: image2
+  },
+  {
+    id: 3,
+    title: '空间设计',
+    description: '室内设计 / 展览设计 / 2024',
+    category: 'space',
+    image: image3
+  },
+  {
+    id: 4,
+    title: '包装设计',
+    description: '产品包装 / 视觉设计 / 2024',
+    category: 'package',
+    image: image4
+  },
+  {
+    id: 5,
+    title: '品牌设计',
+    description: '品牌策略 / 视觉识别 / 2024',
+    category: 'brand',
+    image: image5
+  },
+  {
+    id: 6,
+    title: '数字设计',
+    description: 'UI设计 / 交互设计 / 2024',
+    category: 'digital',
+    image: image6
+  },
+  {
+    id: 7,
+    title: '空间设计',
+    description: '展览设计 / 空间规划 / 2024',
+    category: 'space',
+    image: image7
+  },
+  {
+    id: 8,
+    title: '包装设计',
+    description: '产品包装 / 创意设计 / 2024',
+    category: 'package',
+    image: image8
+  }
+])
+
+const loadMoreWorks = () => {
+  currentPage.value++
+  if (currentPage.value >= 3) {
+    hasMoreWorks.value = false
+  }
+}
+</script>
+
+<style scoped>
+.work-page {
+  padding-top: 80px;
+  min-height: 100vh;
+  background: var(--bg-color);
+}
+</style> 
