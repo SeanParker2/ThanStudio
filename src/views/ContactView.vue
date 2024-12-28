@@ -1,204 +1,243 @@
 <template>
-  <div class="contact-container">
-    <!-- 左侧联系信息 -->
-    <div class="contact-info">
-      <h1>Get in Touch</h1>
-      <div class="info-sections">
-        <div class="info-block">
-          <h2>业务咨询</h2>
-          <a href="mailto:info@than.studio" class="hover-link">info@than.studio</a>
-          <a href="tel:+86574288783780" class="hover-link">+86 574 2887 8378</a>
+  <div class="contact-page">
+    <div class="contact-header">
+      <h1>Let's Create Together</h1>
+      <p>开启一段创意合作之旅</p>
+    </div>
+    
+    <div class="contact-content">
+      <!-- 左侧联系信息 -->
+      <div class="contact-info">
+        <div class="info-block business">
+          <div class="block-header">
+            <span class="label">01</span>
+            <h2>业务咨询</h2>
+          </div>
+          <div class="links-wrapper">
+            <a href="mailto:info@than.studio" class="hover-link">
+              <span class="link-text">info@than.studio</span>
+              <span class="link-icon">↗</span>
+            </a>
+            <a href="tel:+86574288783780" class="hover-link">
+              <span class="link-text">+86 574 2887 8378</span>
+              <span class="link-icon">↗</span>
+            </a>
+          </div>
         </div>
         
-        <div class="info-block">
-          <h2>加入我们</h2>
-          <a href="mailto:career@than.studio" class="hover-link">career@than.studio</a>
-        </div>
-        
-        <div class="info-block">
-          <h2>社交媒体</h2>
-          <div class="social-links">
-            <a href="#" target="_blank" class="hover-link">Instagram</a>
-            <a href="#" target="_blank" class="hover-link">Behance</a>
-            <a href="#" target="_blank" class="hover-link">WeChat</a>
+        <div class="info-block career">
+          <div class="block-header">
+            <span class="label">02</span>
+            <h2>加入我们</h2>
+          </div>
+          <div class="links-wrapper">
+            <a href="mailto:career@than.studio" class="hover-link">
+              <span class="link-text">career@than.studio</span>
+              <span class="link-icon">↗</span>
+            </a>
           </div>
         </div>
       </div>
+
+      <!-- 右侧社交媒体 -->
+      <div class="social-section">
+        <div class="block-header">
+          <span class="label">03</span>
+          <h2>社交媒体</h2>
+        </div>
+        <div class="social-grid">
+          <a href="#" class="social-item" target="_blank" 
+             @mouseenter="updateCursor(true)" 
+             @mouseleave="updateCursor(false)">
+            <span class="social-name">Instagram</span>
+            <span class="social-handle">@thanstudio</span>
+          </a>
+          <a href="#" class="social-item" target="_blank"
+             @mouseenter="updateCursor(true)" 
+             @mouseleave="updateCursor(false)">
+            <span class="social-name">Behance</span>
+            <span class="social-handle">Than Studio</span>
+          </a>
+          <a href="#" class="social-item" target="_blank"
+             @mouseenter="updateCursor(true)" 
+             @mouseleave="updateCursor(false)">
+            <span class="social-name">WeChat</span>
+            <span class="social-handle">thanstudio</span>
+          </a>
+        </div>
+      </div>
     </div>
 
-    <!-- 右侧办公室信息 -->
-    <div class="office-locations">
-      <div class="office">
-        <h2>宁波总部</h2>
-        <p>浙江省宁波市鄞州区<br>
-        南通路707号明创大厦888室<br>
-        邮编: 315000</p>
-      </div>
-      
-      <div class="office">
-        <h2>杭州办公室</h2>
-        <p>浙江省杭州市拱墅区<br>
-        学院北路50号三宝文创园1-608<br>
-        邮编: 310015</p>
-      </div>
-      
-      <div class="office">
-        <h2>上海办公室<span>筹备中</span></h2>
-        <p>上海市静安区<br>
-        金湖路278号1单元4楼<br>
-        邮编: 200000</p>
-      </div>
-    </div>
-
-    <footer>
-      <div class="icp">浙ICP备2022028708号</div>
-    </footer>
+    <!-- 自定义光标 -->
+    <div class="custom-cursor" :class="{ active: cursorActive }" ref="cursor"></div>
   </div>
 </template>
 
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const cursor = ref<HTMLElement | null>(null)
+const cursorActive = ref(false)
+
+const updateCursor = (active: boolean) => {
+  cursorActive.value = active
+}
+
+const moveCursor = (e: MouseEvent) => {
+  if (cursor.value) {
+    cursor.value.style.left = e.clientX + 'px'
+    cursor.value.style.top = e.clientY + 'px'
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('mousemove', moveCursor)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('mousemove', moveCursor)
+})
+</script>
+
 <style scoped>
-.contact-container {
-  height: 100vh;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 80px 40px 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-content: center;
+.contact-page {
+  padding: 120px 0 80px;
+  min-height: 100vh;
+  position: relative;
 }
 
-.contact-info {
-  padding-right: 40px;
-  display: flex;
-  flex-direction: column;
+.contact-header {
+  text-align: center;
+  margin-bottom: 100px;
+  padding: 0 20px;
 }
 
-.contact-info h1 {
-  font-size: 3rem;
-  margin-bottom: 40px;
-  font-weight: 500;
+.contact-header h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
   background: linear-gradient(45deg, #fff, rgba(255,255,255,0.7));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.info-sections {
-  flex: 1;
+.contact-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+
+.block-header {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.label {
+  font-size: 1rem;
+  opacity: 0.5;
 }
 
 .info-block {
-  margin-bottom: 30px;
-  padding-left: 20px;
-  border-left: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 60px;
 }
 
 .info-block h2 {
-  font-size: 1.1rem;
-  margin-bottom: 15px;
-  font-weight: 500;
+  font-size: 1.8rem;
+}
+
+.links-wrapper {
+  padding-left: 40px;
 }
 
 .hover-link {
-  display: block;
-  color: rgba(255,255,255,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  margin-bottom: 8px;
-  font-size: 1rem;
+  padding: 15px 0;
   transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .hover-link:hover {
   color: #fff;
-  transform: translateX(10px);
+  padding-left: 20px;
 }
 
-.social-links {
-  display: flex;
-  gap: 20px;
-}
-
-.office-locations {
-  display: grid;
-  gap: 20px;
-  align-content: center;
-}
-
-.office {
-  padding: 25px;
-  background: rgba(255,255,255,0.03);
-  border-radius: 8px;
+.link-icon {
+  opacity: 0;
+  transform: translateX(-10px);
   transition: all 0.3s ease;
 }
 
-.office:hover {
-  background: rgba(255,255,255,0.05);
-  transform: translateY(-5px);
+.hover-link:hover .link-icon {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.office h2 {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
+.social-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.social-item {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s ease;
 }
 
-.office h2 span {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.5);
-  font-weight: normal;
+.social-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
 }
 
-.office p {
-  color: rgba(255,255,255,0.7);
-  line-height: 1.6;
-  font-size: 0.95rem;
+.social-handle {
+  opacity: 0.5;
 }
 
-footer {
-  grid-column: span 2;
-  text-align: center;
-  padding-top: 20px;
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: all 0.1s ease;
+  z-index: 9999;
 }
 
-.icp {
-  color: rgba(255,255,255,0.4);
-  font-size: 0.8rem;
-}
-
-@media (max-width: 1024px) {
-  .contact-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    height: auto;
-    min-height: 100vh;
-  }
-
-  .contact-info {
-    padding-right: 0;
-  }
-
-  footer {
-    grid-column: span 1;
-  }
+.custom-cursor.active {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
 }
 
 @media (max-width: 768px) {
-  .contact-container {
-    padding: 80px 20px 20px;
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 20px;
   }
-
-  .contact-info h1 {
+  
+  .contact-header h1 {
     font-size: 2.5rem;
-    margin-bottom: 30px;
   }
-
-  .office {
-    padding: 20px;
+  
+  .custom-cursor {
+    display: none;
   }
 }
 </style> 

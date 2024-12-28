@@ -1,5 +1,9 @@
 <template>
   <div class="work-page">
+    <div class="work-header">
+      <h1>Our Works</h1>
+      <p>探索我们的创意作品集</p>
+    </div>
     <WorkFilter v-model="currentCategory" />
     <WorkGrid 
       :works="works"
@@ -98,8 +102,26 @@ const loadMoreWorks = () => {
 
 <style scoped>
 .work-page {
-  padding-top: 80px;
+  padding: 120px 0 80px;
   min-height: 100vh;
-  background: var(--bg-color);
+}
+
+.work-header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 0 20px;
+}
+
+.work-header h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #fff, rgba(255,255,255,0.7));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.work-header p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
 }
 </style> 

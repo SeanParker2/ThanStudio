@@ -1,17 +1,10 @@
 <template>
   <Navbar />
-  <router-view v-slot="{ Component }">
-    <transition name="fade" mode="out-in">
-      <component :is="Component" :key="$route.fullPath" />
-    </transition>
-  </router-view>
+  <router-view />
 </template>
 
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
 import Navbar from '@/components/common/Navbar.vue'
-
-const route = useRoute()
 </script>
 
 <style>
