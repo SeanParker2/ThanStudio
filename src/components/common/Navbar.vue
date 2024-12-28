@@ -1,11 +1,13 @@
 <template>
   <nav class="navbar">
-    <div class="logo">Than Studio</div>
+    <div class="logo">
+      <img :src="logo" alt="Than Studio" />
+    </div>
   </nav>
 </template>
 
 <script setup lang="ts">
-// 如果不需要响应式功能，可以保持空的
+import logo from '@/assets/images/logo.png'
 </script>
 
 <style scoped>
@@ -18,5 +20,10 @@
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
 }
 </style> 
