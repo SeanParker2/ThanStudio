@@ -87,4 +87,29 @@ watch(
   from { transform: translateX(-100%); }
   to { transform: translateX(0); }
 }
+
+@media (max-width: 768px) {
+  .loading-screen {
+    height: 100vh;
+    height: -webkit-fill-available;
+  }
+
+  .loader-content {
+    padding: 0 var(--mobile-padding);
+  }
+
+  .loader-text {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+
+  .loader-line {
+    width: 200px;
+    height: 2px;
+  }
+
+  .loading-progress {
+    animation-duration: 1s;
+  }
+}
 </style> 

@@ -51,27 +51,21 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.scroll-to-top {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 1000;
-}
+@media (max-width: 768px) {
+  .scroll-to-top {
+    right: 15px;
+    bottom: calc(var(--mobile-nav-height) + 15px);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
 
-.scroll-to-top:hover {
-  background: rgba(0, 0, 0, 0.8);
-  transform: translateY(-2px);
+  .scroll-to-top:active {
+    transform: scale(0.95);
+  }
 }
 
 .fade-enter-active,

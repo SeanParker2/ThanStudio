@@ -4,8 +4,7 @@
       <div class="modal-container" @click.stop>
         <div class="modal-header">
           <h3>{{ title }}</h3>
-          <button class="close-button" @click="close">
-            <span class="sr-only">关闭</span>
+          <button class="close-button" @click="close" aria-label="关闭">
             <svg width="24" height="24" viewBox="0 0 24 24">
               <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
             </svg>
@@ -108,5 +107,35 @@ const close = () => {
 .modal-enter-from,
 .modal-leave-to {
   opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .modal-container {
+    width: 100%;
+    height: 100vh;
+    height: -webkit-fill-available;
+    margin: 0;
+    border-radius: 0;
+    padding: calc(var(--safe-area-inset-top) + 15px) var(--mobile-padding) 
+            calc(var(--safe-area-inset-bottom) + 15px);
+  }
+
+  .modal-header {
+    position: sticky;
+    top: 0;
+    background: #000;
+    padding: 15px 0;
+    margin: -15px 0 15px;
+    z-index: 1;
+  }
+
+  .close-button {
+    padding: 12px;
+    margin: -12px;
+  }
+
+  .modal-content {
+    -webkit-overflow-scrolling: touch;
+  }
 }
 </style> 

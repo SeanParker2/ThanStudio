@@ -138,16 +138,17 @@ const filteredWorks = computed(() => {
 @media (max-width: 768px) {
   .works-grid {
     grid-template-columns: 1fr;
-    padding: 0 15px;
+    gap: 20px;
+    padding: 0 var(--mobile-padding);
   }
   
   .work-item {
-    aspect-ratio: 4/3;
-    border-radius: 12px;
+    aspect-ratio: 16/9;
+    border-radius: var(--mobile-radius);
   }
 
   .work-info {
-    padding: 12px;
+    padding: 15px;
     background: linear-gradient(
       to top,
       rgba(0,0,0,0.8) 0%,
@@ -156,15 +157,23 @@ const filteredWorks = computed(() => {
     );
   }
 
-  .work-info h3 {
+  .work-title {
     font-size: 1.2rem;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
+  }
+
+  .work-category {
+    font-size: 0.9rem;
   }
 
   /* 优化触摸反馈 */
+  .work-item {
+    transform: none !important;
+    transition: opacity 0.2s ease;
+  }
+
   .work-item:active {
-    transform: scale(0.98);
-    transition: transform 0.2s ease;
+    opacity: 0.8;
   }
 }
 </style> 

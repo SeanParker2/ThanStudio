@@ -182,33 +182,46 @@ import HomeSection from './HomeSection.vue'
 
 @media (max-width: 768px) {
   .contact-content {
-    padding: 0 20px;
+    padding: 0 var(--mobile-padding);
   }
 
-  .contact-title h2 {
-    font-size: 2.4rem;
-    line-height: 1.2;
+  .contact-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
   }
 
-  .office-block {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .contact-info {
     padding: 20px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.03);
-  }
-
-  .hover-link {
-    padding: 12px;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.02);
-  }
-
-  .hover-link:active {
+    border-radius: var(--mobile-radius);
     background: rgba(255,255,255,0.05);
-    transform: translateY(1px);
   }
 
+  .contact-item {
+    margin-bottom: 20px;
+  }
+
+  .contact-label {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+
+  .contact-value {
+    font-size: 1.1rem;
+  }
+
+  /* 优化社交媒体图标 */
   .social-links {
-    gap: 12px;
+    gap: 15px;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
   }
 }
 </style> 

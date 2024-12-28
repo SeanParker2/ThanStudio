@@ -9,6 +9,11 @@
   --header-height: 48px;
   --nav-bottom-height: 60px;
   --page-padding: 15px;
+  --mobile-header-height: 48px;
+  --mobile-nav-height: 60px;
+  --mobile-padding: 15px;
+  --mobile-font-base: 14px;
+  --mobile-radius: 12px;
 }
 
 * {
@@ -171,15 +176,10 @@ button {
     top: 0;
     left: 0;
     right: 0;
-    height: 48px;
+    height: var(--mobile-header-height);
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 15px;
     z-index: 100;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .nav-header .logo {
@@ -192,7 +192,7 @@ button {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 60px;
+    height: var(--mobile-nav-height);
     padding: 5px 0;
     display: flex;
     justify-content: space-around;
@@ -226,8 +226,10 @@ button {
 
   /* 为内容区域添加安全区域 */
   .page-container {
-    padding-top: calc(48px + env(safe-area-inset-top));
-    padding-bottom: calc(60px + env(safe-area-inset-bottom));
+    padding-top: calc(var(--mobile-header-height) + var(--safe-area-inset-top));
+    padding-bottom: calc(var(--mobile-nav-height) + var(--safe-area-inset-bottom));
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
   }
 }
 
@@ -319,7 +321,7 @@ button {
     transform-style: preserve-3d;
   }
 
-  /* 优���滚动容器 */
+  /* 优化滚动容器 */
   .scroll-container {
     overscroll-behavior: contain;
     scroll-snap-type: y mandatory;
@@ -416,5 +418,89 @@ button {
   .page-container {
     padding-top: calc(var(--header-height) + env(safe-area-inset-top));
     padding-bottom: calc(var(--nav-bottom-height) + env(safe-area-inset-bottom));
+  }
+}
+
+/* 优化移动端基础布局 */
+@media (max-width: 768px) {
+  body {
+    font-size: var(--mobile-font-base);
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
+  }
+
+  .container {
+    padding: 0 var(--mobile-padding);
+  }
+
+  /* 优化点击区域 */
+  button, 
+  a,
+  .clickable {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px;
+    touch-action: manipulation;
+  }
+
+  /* 优化滚动容器 */
+  .scroll-container {
+    scroll-padding-top: var(--safe-area-inset-top);
+    scroll-padding-bottom: var(--safe-area-inset-bottom);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 优化表单元素 */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+    padding: 12px;
+    border-radius: var(--mobile-radius);
+  }
+}
+
+@media (max-width: 768px) {
+  /* 图片加载优化 */
+  img {
+    loading: lazy;
+    decoding: async;
+  }
+
+  /* 骨架屏样式 */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,0.03) 25%,
+      rgba(255,255,255,0.05) 50%,
+      rgba(255,255,255,0.03) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* 内容可见性优化 */
+  .content-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1000px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* 移除点击高亮 */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* 添加触摸反馈 */
+  .touchable {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .touchable:active {
+    opacity: 0.7;
+    transform: scale(0.98);
+    transition: all 0.2s ease;
   }
 }

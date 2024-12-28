@@ -154,7 +154,7 @@ import visionImage2 from '@/assets/images/10004.png'
   }
 
   .vision-text {
-    order: -1;
+    padding: 0 var(--mobile-padding);
   }
 
   .vision-label {
@@ -168,12 +168,14 @@ import visionImage2 from '@/assets/images/10004.png'
   }
 
   .description {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     line-height: 1.6;
+    padding-left: 15px;
   }
 
   .vision-header h3 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    line-height: 1.3;
   }
 
   .quote-en {
@@ -185,7 +187,9 @@ import visionImage2 from '@/assets/images/10004.png'
   }
 
   .image-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 0 var(--mobile-padding);
   }
 
   .main-image {
@@ -197,8 +201,8 @@ import visionImage2 from '@/assets/images/10004.png'
   }
 
   .image-item {
-    border-radius: 12px;
-    aspect-ratio: 4/3;
+    aspect-ratio: 1;
+    border-radius: var(--mobile-radius);
   }
 
   .image-item img {

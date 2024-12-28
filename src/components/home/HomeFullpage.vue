@@ -23,6 +23,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { useMediaQuery } from '@vueuse/core'
 import PageIndicator from '../common/PageIndicator.vue'
 
 const props = defineProps<{
@@ -31,6 +32,7 @@ const props = defineProps<{
 }>()
 
 const route = useRoute()
+const isMobile = useMediaQuery('(max-width: 768px)')
 const currentSection = ref(0)
 const touchStartY = ref(0)
 const isScrolling = ref(false)
@@ -90,26 +92,23 @@ const resetState = () => {
   isScrolling.value = false
 }
 
+// 移动端滚动处理
 const handleMobileScroll = () => {
-  if (window.innerWidth <= 768) {
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => {
-      const rect = section.getBoundingClientRect();
-      const threshold = window.innerHeight * 0.3;
-      
-      if (rect.top >= -threshold && rect.top <= threshold) {
-        section.classList.add('section-active');
-      } else {
-        section.classList.remove('section-active');
+  if (isMobile.value) {
+    const sections = document.querySelectorAll('.section')
+    sections.forEach((section, index) => {
+      const rect = section.getBoundingClientRect()
+      if (rect.top >= -50 && rect.top <= 50) {
+        currentSection.value = index
       }
-    });
+    })
   }
 }
 
 onMounted(() => {
   resetState() // 每次挂载时重置状态
-  if (window.innerWidth <= 768) {
-    window.addEventListener('scroll', handleMobileScroll);
+  if (isMobile.value) {
+    window.addEventListener('scroll', handleMobileScroll)
   }
 })
 
@@ -118,7 +117,9 @@ onUnmounted(() => {
   window.removeEventListener('touchstart', onTouchStart)
   window.removeEventListener('touchmove', onTouchMove)
   resetState() // 卸载时也重置状态
-  window.removeEventListener('scroll', handleMobileScroll);
+  if (isMobile.value) {
+    window.removeEventListener('scroll', handleMobileScroll)
+  }
 })
 </script>
 
@@ -145,15 +146,9 @@ onUnmounted(() => {
   }
 
   .section {
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-    padding: calc(60px + var(--safe-area-inset-top)) 20px
-            calc(20px + var(--safe-area-inset-bottom));
-  }
-
-  .section {
-    will-change: transform;
-    -webkit-overflow-scrolling: touch;
+    height: 100vh;
+    height: -webkit-fill-available;
+    scroll-snap-align: start;
   }
 }
 </style>

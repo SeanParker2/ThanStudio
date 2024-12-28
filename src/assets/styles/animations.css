@@ -61,4 +61,11 @@
   .slide-leave-active {
     transition: transform 0.3s ease-in-out;
   }
+
+  /* 优化动画性能 */
+  .animated-element {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
 } 
