@@ -1,58 +1,59 @@
 <template>
-  <HomeSection>
+  <div class="team-section">
     <div class="team-content">
-      <div class="team-showcase">
-        <div class="showcase-wrapper">
-          <img src="@/assets/images/a1.jpg" alt="Team Showcase">
+      <div class="showcase-wrapper">
+        <div class="team-showcase">
+          <img src="@/assets/images/a1.jpg" alt="Team showcase" />
         </div>
       </div>
-      
-      <div class="team-members">
-        <div class="member-grid">
-          <div v-for="member in teamMembers" :key="member.id" class="member-card">
-            <div class="member-photo">
-              <img :src="member.photo" :alt="member.name">
-            </div>
-            <div class="member-info">
-              <h3>{{ member.name }}</h3>
-              <p>{{ member.role }}</p>
-            </div>
+      <div class="member-grid">
+        <div 
+          v-for="member in teamMembers" 
+          :key="member.id" 
+          class="member-card"
+        >
+          <div class="member-photo">
+            <img :src="getTeammatePath(member.id)" :alt="member.name" />
+          </div>
+          <div class="member-info">
+            <h3>{{ member.name }}</h3>
+            <p>{{ member.role }}</p>
           </div>
         </div>
       </div>
     </div>
-  </HomeSection>
+  </div>
 </template>
 
 <script setup lang="ts">
-import HomeSection from '@/components/common/Section.vue'
+import { ref } from 'vue'
 
-const teamMembers = [
+const getTeammatePath = (id: number) => {
+  return new URL(`../../assets/images/teammate${id}.jpg`, import.meta.url).href
+}
+
+const teamMembers = ref([
   {
     id: 1,
     name: 'Sarah Chen',
-    role: 'Creative Director',
-    photo: '/src/assets/images/teammate1.jpg'
+    role: 'Creative Director'
   },
   {
     id: 2,
     name: 'Mike Zhang',
-    role: 'Design Lead',
-    photo: '/src/assets/images/teammate2.jpg'
+    role: 'Design Lead'
   },
   {
     id: 3,
     name: 'Lisa Wang',
-    role: 'Art Director',
-    photo: '/src/assets/images/teammate3.jpg'
+    role: 'Art Director'
   },
   {
     id: 4,
     name: 'Tom Liu',
-    role: 'Strategy Director',
-    photo: '/src/assets/images/teammate4.jpg'
+    role: 'Strategy Director'
   }
-]
+])
 </script>
 
 <style scoped>
@@ -138,7 +139,7 @@ const teamMembers = [
 
 @media (max-width: 768px) {
   .team-content {
-    padding: 40px;
+    padding: 40px 20px;
   }
 
   .member-grid {
@@ -149,6 +150,10 @@ const teamMembers = [
   .member-photo {
     width: 100px;
     height: 100px;
+  }
+
+  .team-showcase img {
+    height: 40vh;
   }
 }
 </style> 
