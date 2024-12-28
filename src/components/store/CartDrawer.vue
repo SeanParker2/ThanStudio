@@ -211,47 +211,46 @@ const checkout = () => {
 @media (max-width: 768px) {
   .cart-drawer {
     width: 100%;
-    padding: 15px;
+    height: 100vh;
+    height: -webkit-fill-available;
+    padding: calc(15px + var(--safe-area-inset-top)) 15px 
+            calc(15px + var(--safe-area-inset-bottom));
   }
 
   .cart-header {
-    padding: 10px 0;
-  }
-
-  .cart-title {
-    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(10px);
+    margin: -15px -15px 15px;
+    padding: 15px;
+    z-index: 10;
   }
 
   .cart-items {
-    padding: 10px 0;
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .cart-item {
-    padding: 10px;
-    border-radius: 8px;
+    margin-bottom: 12px;
     background: rgba(255,255,255,0.03);
-  }
-
-  .item-info {
-    gap: 10px;
-  }
-
-  .item-title {
-    font-size: 0.9rem;
-  }
-
-  .item-price {
-    font-size: 1rem;
+    border-radius: 12px;
+    padding: 12px;
   }
 
   .cart-footer {
-    padding: 15px 0;
+    position: sticky;
+    bottom: 0;
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(10px);
+    margin: 0 -15px -15px;
+    padding: 15px;
   }
 
   .checkout-btn {
-    padding: 15px;
-    font-size: 1rem;
-    border-radius: 8px;
+    padding: calc(12px + env(safe-area-inset-bottom));
   }
 }
 </style> 

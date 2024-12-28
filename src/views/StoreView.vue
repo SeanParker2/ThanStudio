@@ -650,28 +650,35 @@ const closeProductModal = () => {
   }
 
   .product-item {
+    border-radius: 12px;
     background: rgba(255,255,255,0.03);
-    border-radius: 8px;
-    overflow: hidden;
+  }
+
+  .product-image {
+    aspect-ratio: 1;
+    border-radius: 8px 8px 0 0;
   }
 
   .product-info {
     padding: 12px;
   }
 
-  .product-title {
-    font-size: 1rem;
-    margin-bottom: 4px;
+  /* 优化触摸反馈 */
+  .product-item:active {
+    transform: scale(0.98);
+    transition: transform 0.2s ease;
   }
 
-  .product-price {
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-
-  .add-to-cart {
-    padding: 6px 12px;
-    font-size: 0.85rem;
+  /* 优化加载状态 */
+  .skeleton-loading {
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,0.03) 25%,
+      rgba(255,255,255,0.05) 50%,
+      rgba(255,255,255,0.03) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
   }
 }
 </style> 

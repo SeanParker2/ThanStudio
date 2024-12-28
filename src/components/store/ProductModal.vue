@@ -187,9 +187,37 @@ const addToCart = () => {
 }
 
 @media (max-width: 768px) {
+  .modal-container {
+    margin: 0;
+    border-radius: 0;
+    height: 100vh;
+    height: -webkit-fill-available;
+  }
+
   .modal-body {
     grid-template-columns: 1fr;
-    padding: 20px;
+    gap: 20px;
+    padding: 15px;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .product-image {
+    aspect-ratio: 1;
+    border-radius: 12px;
+  }
+
+  .quantity button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .add-to-cart {
+    position: sticky;
+    bottom: 0;
+    padding: calc(12px + env(safe-area-inset-bottom));
+    margin: 0 -15px;
+    border-radius: 0;
   }
 }
 

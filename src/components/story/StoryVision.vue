@@ -191,6 +191,52 @@ import visionImage2 from '@/assets/images/10004.png'
   .main-image {
     grid-column: span 1;
   }
+
+  .image-grid {
+    gap: 12px;
+  }
+
+  .image-item {
+    border-radius: 12px;
+    aspect-ratio: 4/3;
+  }
+
+  .image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* 移动端图片加载优化 */
+  .image-item.loading {
+    background: rgba(255,255,255,0.05);
+  }
+
+  .image-item.loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255,255,255,0.05) 50%,
+      transparent 100%
+    );
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* 禁用悬停效果 */
+  .image-item:hover img {
+    transform: none;
+  }
+
+  /* 添加触摸反馈 */
+  .image-item:active {
+    opacity: 0.8;
+  }
 }
 
 @media (max-width: 480px) {

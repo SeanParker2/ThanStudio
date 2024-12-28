@@ -182,27 +182,33 @@ import HomeSection from './HomeSection.vue'
 
 @media (max-width: 768px) {
   .contact-content {
-    grid-template-columns: 1fr;
     padding: 0 20px;
   }
 
   .contact-title h2 {
-    font-size: 2.8rem;
-    padding-top: 40px;
+    font-size: 2.4rem;
+    line-height: 1.2;
   }
 
   .office-block {
-    padding-top: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .hover-link {
+    padding: 12px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .hover-link:active {
+    background: rgba(255,255,255,0.05);
+    transform: translateY(1px);
   }
 
   .social-links {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .icp {
-    margin-top: 40px;
-    text-align: center;
+    gap: 12px;
   }
 }
 </style> 

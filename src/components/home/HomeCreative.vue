@@ -64,19 +64,28 @@ import HomeSection from './HomeSection.vue'
 
 @media (max-width: 768px) {
   .creative-content {
-    padding: 0 40px;
+    padding: 0 20px;
   }
   
   .text-en {
     font-size: 1.8rem;
+    line-height: 1.3;
   }
   
   .text-zh {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    line-height: 1.4;
+  }
+  
+  .description {
+    padding-left: 15px;
+    margin-top: 30px;
   }
   
   .description p {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
   }
 }
 </style> 

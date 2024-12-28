@@ -177,11 +177,43 @@ import StoryVision from '@/components/story/StoryVision.vue'
   }
 
   .story-section {
-    padding: 40px 20px;
+    padding: 30px 20px;
   }
 
   .section-content {
-    margin-top: 20px;
+    max-width: 100%;
+  }
+
+  .about-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .about-text {
+    order: -1;
+  }
+
+  .about-image {
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  /* 优化滚动性能 */
+  .story-section {
+    will-change: transform;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 添加触摸反馈 */
+  .story-link:active {
+    opacity: 0.7;
+    transform: translateY(1px);
   }
 
   .about-grid {
@@ -189,31 +221,39 @@ import StoryVision from '@/components/story/StoryVision.vue'
     gap: 30px;
   }
 
-  .about-text {
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-
   .about-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
-    text-align: center;
     padding: 20px;
     background: rgba(255,255,255,0.03);
-    border-radius: 8px;
+    border-radius: 12px;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 15px 10px;
   }
 
   .stat-number {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 600;
     display: block;
     margin-bottom: 5px;
+    background: linear-gradient(45deg, #fff, rgba(255,255,255,0.7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .stat-label {
-    font-size: 0.85rem;
-    opacity: 0.7;
+    font-size: 0.9rem;
+    color: var(--text-color-secondary);
+  }
+
+  /* 添加触摸反馈 */
+  .stat-item:active {
+    transform: scale(0.98);
+    transition: transform 0.2s ease;
   }
 }
 

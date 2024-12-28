@@ -7,8 +7,9 @@
       loop 
       playsinline 
       preload="auto"
+      :class="{ 'mobile-video': isMobile }"
     >
-      <source src="@/assets/videos/studio.mp4" type="video/mp4">
+      <source src="/studio.mp4" type="video/mp4">
     </video>
   </div>
 </template>
@@ -17,14 +18,26 @@
 import { ref, onMounted } from 'vue'
 
 const videoRef = ref<HTMLVideoElement>()
-const hasError = ref(false)
+const isMobile = ref(false)
 
 onMounted(() => {
+  isMobile.value = window.innerWidth <= 768
+  
   if (videoRef.value) {
-    videoRef.value.play().catch((error) => {
-      console.log("视频自动播放失败:", error)
-      hasError.value = true
-    })
+    videoRef.value.load()
+    const playPromise = videoRef.value.play()
+    
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        const playOnInteraction = () => {
+          videoRef.value?.play()
+          document.removeEventListener('touchstart', playOnInteraction)
+          document.removeEventListener('click', playOnInteraction)
+        }
+        document.addEventListener('touchstart', playOnInteraction)
+        document.addEventListener('click', playOnInteraction)
+      })
+    }
   }
 })
 </script>
@@ -37,21 +50,21 @@ onMounted(() => {
   width: 100%;
   height: 100vh;
   z-index: -1;
+  overflow: hidden;
 }
 
-.background-video video,
-.fallback-content img {
+.background-video video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  pointer-events: none;
 }
 
-.fallback-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+@media (max-width: 768px) {
+  .mobile-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.2);
+  }
 }
 </style> 

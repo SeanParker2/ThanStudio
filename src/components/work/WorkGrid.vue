@@ -142,26 +142,29 @@ const filteredWorks = computed(() => {
   }
   
   .work-item {
-    aspect-ratio: 3/2;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
   }
 
   .work-info {
-    transform: translateY(0);
-    background: rgba(0,0,0,0.6);
-    padding: 15px;
+    padding: 12px;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.8) 0%,
+      rgba(0,0,0,0.4) 60%,
+      transparent 100%
+    );
   }
 
-  .work-title {
-    font-size: 1.1rem;
+  .work-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
   }
 
-  .work-category {
-    font-size: 0.9rem;
-  }
-
-  .load-more {
-    margin: 40px auto;
-    padding: 10px 30px;
+  /* 优化触摸反馈 */
+  .work-item:active {
+    transform: scale(0.98);
+    transition: transform 0.2s ease;
   }
 }
 </style> 

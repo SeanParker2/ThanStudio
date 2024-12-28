@@ -139,23 +139,44 @@ const loadMoreWorks = () => {
   }
 
   .filter-container {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 0 15px;
-    margin-bottom: 20px;
+    position: sticky;
+    top: 48px; /* 导航栏高度 */
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    margin: 0 -15px;
+    padding: 15px;
   }
 
   .filter-list {
     display: flex;
-    gap: 10px;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     padding-bottom: 5px;
-    min-width: min-content;
+  }
+
+  .filter-list::-webkit-scrollbar {
+    display: none;
   }
 
   .filter-item {
-    white-space: nowrap;
-    padding: 6px 12px;
+    flex-shrink: 0;
+    padding: 8px 16px;
+    border-radius: 20px;
     font-size: 0.9rem;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .filter-item.active {
+    background: #fff;
+    color: #000;
+  }
+
+  .filter-item:active {
+    opacity: 0.7;
   }
 }
 </style> 

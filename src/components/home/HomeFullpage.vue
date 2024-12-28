@@ -55,12 +55,19 @@ const onTouchStart = (e: TouchEvent) => {
 
 const onTouchMove = (e: TouchEvent) => {
   if (!isScrolling.value) {
-    const deltaY = touchStartY.value - e.touches[0].clientY
-    if (Math.abs(deltaY) > 50) {
+    const touch = e.touches[0];
+    const deltaY = touchStartY.value - touch.clientY;
+    const deltaTime = Date.now() - touchStartTime.value;
+    
+    // 计算滑动速度
+    const speed = Math.abs(deltaY) / deltaTime;
+    
+    // 根据滑动速度和距离判断是否切换页面
+    if (Math.abs(deltaY) > 30 || speed > 0.5) {
       if (deltaY > 0 && currentSection.value < props.totalSections - 1) {
-        goToSection(currentSection.value + 1)
+        goToSection(currentSection.value + 1);
       } else if (deltaY < 0 && currentSection.value > 0) {
-        goToSection(currentSection.value - 1)
+        goToSection(currentSection.value - 1);
       }
     }
   }
@@ -83,8 +90,27 @@ const resetState = () => {
   isScrolling.value = false
 }
 
+const handleMobileScroll = () => {
+  if (window.innerWidth <= 768) {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      const threshold = window.innerHeight * 0.3;
+      
+      if (rect.top >= -threshold && rect.top <= threshold) {
+        section.classList.add('section-active');
+      } else {
+        section.classList.remove('section-active');
+      }
+    });
+  }
+}
+
 onMounted(() => {
   resetState() // 每次挂载时重置状态
+  if (window.innerWidth <= 768) {
+    window.addEventListener('scroll', handleMobileScroll);
+  }
 })
 
 onUnmounted(() => {
@@ -92,6 +118,7 @@ onUnmounted(() => {
   window.removeEventListener('touchstart', onTouchStart)
   window.removeEventListener('touchmove', onTouchMove)
   resetState() // 卸载时也重置状态
+  window.removeEventListener('scroll', handleMobileScroll);
 })
 </script>
 
@@ -118,9 +145,15 @@ onUnmounted(() => {
   }
 
   .section {
-    height: auto;
     min-height: 100vh;
-    padding: 60px 20px;
+    min-height: -webkit-fill-available;
+    padding: calc(60px + var(--safe-area-inset-top)) 20px
+            calc(20px + var(--safe-area-inset-bottom));
+  }
+
+  .section {
+    will-change: transform;
+    -webkit-overflow-scrolling: touch;
   }
 }
 </style>
