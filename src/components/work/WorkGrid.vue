@@ -56,26 +56,32 @@ const filteredWorks = computed(() => {
 <style scoped>
 .works-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 30px;
   padding: 0 40px;
-  max-width: 1600px;
   margin: 0 auto;
+  max-width: 1440px;
 }
 
 .work-item {
   position: relative;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   aspect-ratio: 16/9;
+  background: rgba(255,255,255,0.05);
+  transition: transform 0.3s ease;
+}
+
+.work-item:hover {
+  transform: translateY(-5px);
 }
 
 .work-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.6s ease;
 }
 
 .work-info {
@@ -83,30 +89,33 @@ const filteredWorks = computed(() => {
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 20px;
-  background: rgba(0,0,0,0.8);
+  padding: 30px;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
   transform: translateY(100%);
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
 }
 
-.work-item:hover img {
-  transform: scale(1.05);
+.work-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
 }
 
-.work-item:hover .work-info {
-  transform: translateY(0);
+.work-info p {
+  font-size: 1rem;
+  opacity: 0.8;
 }
 
 .load-more {
   grid-column: 1 / -1;
-  margin: 60px auto;
-  padding: 12px 40px;
-  border: 1px solid #fff;
+  margin: 80px auto;
+  padding: 15px 50px;
+  border: 1px solid rgba(255,255,255,0.3);
   background: none;
   color: #fff;
-  font-size: 14px;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  border-radius: 4px;
 }
 
 .load-more:hover {
@@ -124,5 +133,35 @@ const filteredWorks = computed(() => {
 .work-item-leave-to {
   opacity: 0;
   transform: translateY(30px);
+}
+
+@media (max-width: 768px) {
+  .works-grid {
+    grid-template-columns: 1fr;
+    padding: 0 15px;
+  }
+  
+  .work-item {
+    aspect-ratio: 3/2;
+  }
+
+  .work-info {
+    transform: translateY(0);
+    background: rgba(0,0,0,0.6);
+    padding: 15px;
+  }
+
+  .work-title {
+    font-size: 1.1rem;
+  }
+
+  .work-category {
+    font-size: 0.9rem;
+  }
+
+  .load-more {
+    margin: 40px auto;
+    padding: 10px 30px;
+  }
 }
 </style> 

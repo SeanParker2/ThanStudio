@@ -177,24 +177,50 @@ import StoryVision from '@/components/story/StoryVision.vue'
   }
 
   .story-section {
-    padding: 100px 0;
+    padding: 40px 20px;
   }
 
   .section-content {
-    padding: 0 20px;
+    margin-top: 20px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .about-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .about-stats {
-    grid-template-columns: 1fr;
-  }
-
-  .stat-item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    text-align: center;
     padding: 20px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
   }
 
-  .story-section h2 {
-    font-size: 2rem;
-    margin-bottom: 40px;
+  .stat-number {
+    font-size: 1.8rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
 </style> 

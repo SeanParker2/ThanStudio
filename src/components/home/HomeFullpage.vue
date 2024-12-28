@@ -105,4 +105,22 @@ onUnmounted(() => {
   height: 100%;
   transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
+
+@media (max-width: 768px) {
+  .fullpage-container {
+    height: auto;
+    overflow: visible;
+  }
+
+  .sections-wrapper {
+    transform: none !important;
+    transition: none;
+  }
+
+  .section {
+    height: auto;
+    min-height: 100vh;
+    padding: 60px 20px;
+  }
+}
 </style>

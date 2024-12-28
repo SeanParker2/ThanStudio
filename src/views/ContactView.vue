@@ -239,5 +239,18 @@ onUnmounted(() => {
   .custom-cursor {
     display: none;
   }
+
+  .social-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .social-item {
+    padding: 20px;
+  }
+
+  .social-name {
+    font-size: 1.2rem;
+  }
 }
 </style> 

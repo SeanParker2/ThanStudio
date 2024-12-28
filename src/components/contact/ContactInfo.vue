@@ -52,4 +52,24 @@
   display: flex;
   gap: 20px;
 }
+
+@media (max-width: 768px) {
+  .contact-sections {
+    margin-top: 30px;
+  }
+
+  .info-block {
+    margin-bottom: 30px;
+  }
+
+  .social-links {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .info-block a {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+}
 </style> 

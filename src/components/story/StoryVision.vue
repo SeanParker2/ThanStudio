@@ -144,6 +144,34 @@ import visionImage2 from '@/assets/images/10004.png'
 }
 
 @media (max-width: 768px) {
+  .vision-container {
+    padding: 40px 20px;
+  }
+
+  .vision-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .vision-text {
+    order: -1;
+  }
+
+  .vision-label {
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+  }
+
+  .vision-quotes {
+    margin: 20px 0;
+    padding-left: 15px;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
   .vision-header h3 {
     font-size: 2rem;
   }
@@ -162,6 +190,28 @@ import visionImage2 from '@/assets/images/10004.png'
 
   .main-image {
     grid-column: span 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .vision-grid {
+    gap: 40px;
+  }
+
+  .vision-text {
+    padding-right: 0;
+  }
+
+  .vision-header h3 {
+    font-size: 1.6rem;
+  }
+
+  .description {
+    padding-left: 20px;
+  }
+
+  .image-item {
+    border-radius: 4px;
   }
 }
 </style> 

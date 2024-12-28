@@ -41,4 +41,24 @@
 
 .slide-leave-to {
   transform: translateX(-100%);
+}
+
+@media (max-width: 768px) {
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.2s ease;
+  }
+
+  .fade-up-enter-active {
+    transition: all 0.4s ease;
+  }
+
+  .fade-up-enter-from {
+    transform: translateY(20px);
+  }
+
+  .slide-enter-active,
+  .slide-leave-active {
+    transition: transform 0.3s ease-in-out;
+  }
 } 

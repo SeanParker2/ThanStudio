@@ -192,4 +192,27 @@ const addToCart = () => {
     padding: 20px;
   }
 }
+
+@media (max-width: 480px) {
+  .modal-body {
+    padding: 15px;
+  }
+
+  .product-details h2 {
+    font-size: 20px;
+  }
+
+  .price {
+    font-size: 24px;
+  }
+
+  .quantity {
+    gap: 15px;
+  }
+
+  .quantity button {
+    width: 25px;
+    height: 25px;
+  }
+}
 </style> 

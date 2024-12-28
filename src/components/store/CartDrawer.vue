@@ -211,6 +211,47 @@ const checkout = () => {
 @media (max-width: 768px) {
   .cart-drawer {
     width: 100%;
+    padding: 15px;
+  }
+
+  .cart-header {
+    padding: 10px 0;
+  }
+
+  .cart-title {
+    font-size: 1.2rem;
+  }
+
+  .cart-items {
+    padding: 10px 0;
+  }
+
+  .cart-item {
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .item-info {
+    gap: 10px;
+  }
+
+  .item-title {
+    font-size: 0.9rem;
+  }
+
+  .item-price {
+    font-size: 1rem;
+  }
+
+  .cart-footer {
+    padding: 15px 0;
+  }
+
+  .checkout-btn {
+    padding: 15px;
+    font-size: 1rem;
+    border-radius: 8px;
   }
 }
 </style> 

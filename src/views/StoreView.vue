@@ -158,7 +158,7 @@ const products = [
   },
   {
     id: 5,
-    title: '��计师帆���包',
+    title: '设计师帆包',
     description: '原创图案 环保材质',
     price: 259,
     category: 'goods',
@@ -476,6 +476,67 @@ const closeProductModal = () => {
   .store-header h1 {
     font-size: 36px;
   }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  .sort-options {
+    width: 100%;
+  }
+
+  .sort-options select {
+    width: 100%;
+  }
+
+  .products-grid {
+    padding: 0 20px;
+  }
+
+  .store-page {
+    padding-top: 40px;
+  }
+
+  .products-grid {
+    gap: 15px;
+  }
+
+  .product-item {
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .product-meta {
+    padding: 10px 0;
+  }
+
+  .product-price {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .toolbar {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  .sort-options select {
+    width: 100%;
+  }
+
+  .product-item {
+    margin-bottom: 30px;
+  }
+
+  .product-item {
+    aspect-ratio: 1;
+  }
 }
 
 .product-meta {
@@ -556,6 +617,61 @@ const closeProductModal = () => {
 
   .search-box input {
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .toolbar {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  .sort-options select {
+    width: 100%;
+  }
+
+  .product-item {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .store-page {
+    padding-top: 60px;
+  }
+
+  .products-grid {
+    gap: 15px;
+    padding: 0 15px;
+  }
+
+  .product-item {
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .product-info {
+    padding: 12px;
+  }
+
+  .product-title {
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+
+  .product-price {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .add-to-cart {
+    padding: 6px 12px;
+    font-size: 0.85rem;
   }
 }
 </style> 

@@ -41,8 +41,33 @@ import BackgroundVideo from './BackgroundVideo.vue'
 }
 
 @media (max-width: 768px) {
-  .hero-text h1 {
-    font-size: 48px;
+  .hero-section {
+    height: calc(100vh - 96px);
+  }
+
+  .hero-content {
+    padding: 0 20px;
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin-bottom: 15px;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    max-width: 280px;
+    opacity: 0.8;
+  }
+
+  .hero-cta {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 0.9rem;
   }
 }
 </style> 

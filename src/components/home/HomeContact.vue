@@ -183,16 +183,26 @@ import HomeSection from './HomeSection.vue'
 @media (max-width: 768px) {
   .contact-content {
     grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 0 30px;
+    padding: 0 20px;
   }
 
   .contact-title h2 {
     font-size: 2.8rem;
+    padding-top: 40px;
   }
 
-  .office-block h3 {
-    font-size: 1.4rem;
+  .office-block {
+    padding-top: 20px;
+  }
+
+  .social-links {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .icp {
+    margin-top: 40px;
+    text-align: center;
   }
 }
 </style> 

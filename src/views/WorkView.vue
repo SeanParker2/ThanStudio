@@ -108,12 +108,12 @@ const loadMoreWorks = () => {
 
 .work-header {
   text-align: center;
-  margin-bottom: 60px;
-  padding: 0 20px;
+  margin-bottom: 80px;
+  padding: 0 40px;
 }
 
 .work-header h1 {
-  font-size: 3.5rem;
+  font-size: 4rem;
   margin-bottom: 20px;
   background: linear-gradient(45deg, #fff, rgba(255,255,255,0.7));
   -webkit-background-clip: text;
@@ -121,7 +121,41 @@ const loadMoreWorks = () => {
 }
 
 .work-header p {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+  .work-page {
+    padding: 60px 0 40px;
+  }
+
+  .work-header {
+    margin-bottom: 30px;
+  }
+
+  .work-header h1 {
+    font-size: 2rem;
+  }
+
+  .filter-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 15px;
+    margin-bottom: 20px;
+  }
+
+  .filter-list {
+    display: flex;
+    gap: 10px;
+    padding-bottom: 5px;
+    min-width: min-content;
+  }
+
+  .filter-item {
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
 }
 </style> 
