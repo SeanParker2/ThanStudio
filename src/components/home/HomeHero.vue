@@ -7,11 +7,10 @@
         loop 
         muted 
         playsinline
-        :poster="isMobile ? '/mobile-poster.jpg' : '/desktop-poster.jpg'"
         preload="metadata"
       >
         <source 
-          :src="isMobile ? '/mobile-hero.mp4' : '/studio.mp4'" 
+          src="/studio.mp4" 
           type="video/mp4"
         >
       </video>

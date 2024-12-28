@@ -6,9 +6,8 @@
         loop
         muted
         playsinline
-        :class="{ 'mobile-video': isMobile }"
       >
-        <source :src="videoSource" type="video/mp4">
+        <source src="/studio.mp4" type="video/mp4">
       </video>
     </div>
   </div>
